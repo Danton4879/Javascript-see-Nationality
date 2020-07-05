@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background: #1a1a1a7a;
+            font: 18pt Arial;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="texto">Verificador</h1>
+    <input type="text" class="paisNac" placeholder="Digite o seu País: ">
+    <input type="button" class="verificar" value="Verificar!">
+    <input type="button" class="reset" value="reset">
+    <div class="result">Você possui nacionalidade: </div>
+    <script type="text/javascript">
+        var captReset = document.querySelector('input[value="reset"]')
+        var captSend = document.querySelector('input[value="Verificar!"]')
+        var captResult = document.querySelector('div.result')
+        captSend.addEventListener('click', verificarNacionalidade)
+
+        function verificarNacionalidade() {
+            var nacionalidade = String(document.querySelector('input.paisNac').value)
+            if(nacionalidade == 'Brasileiro' || nacionalidade == 'Brasil'){
+                captResult.insertAdjacentHTML('afterend', '<p>Brasileiro</p>')
+            }else{
+                if(nacionalidade == ''){
+                    alert('Você precisa escrever algo')
+                }else{
+                    captResult.innerHTML='Você é extrangeiro'
+                }
+            }
+        }
+
+        captReset.addEventListener('click', btnReset)
+
+        function btnReset() {
+            document.querySelector('input.paisNac').value=''
+            document.querySelector('div.result').innerHTML='Você possui nacionalidade:'
+        }
+
+    </script>
+</body>
+</html>
